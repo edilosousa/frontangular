@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 bg-dark text-info rounded">
+      <h4>Colaborador </h4>
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <div *ngIf="currentTutorial">
+      <form>
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" id="nome" [(ngModel)]="currentTutorial.nome" name="nome" />
+        </div>
+        <div class="form-group">
+          <label for="telefone">Telefone</label>
+          <input type="text" class="form-control" id="telefone" [(ngModel)]="currentTutorial.telefone"
+            name="telefone" />
+        </div>
+        <div class="form-group">
+          <label for="empresa">Empresa</label>
+          <input type="text" class="form-control" id="empresa" [(ngModel)]="currentTutorial.empresa" name="empresa" />
+        </div>
+        <div class="form-group">
+          <label for="setor">Setor</label>
+          <input type="text" class="form-control" id="setor" [(ngModel)]="currentTutorial.setor" name="setor" />
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="text" class="form-control" id="email" [(ngModel)]="currentTutorial.email" name="email" />
+        </div>
+        <div class="form-group">
+          <label for="cargo">Cargo</label>
+          <input type="text" class="form-control" id="cargo" [(ngModel)]="currentTutorial.cargo" name="cargo" />
+        </div>
+      </form>
+      <div class="text-center">
+        <button class="btn btn-danger mr-5" (click)="deleteTutorial()">
+          Deletar colaborador
+        </button>
+
+        <button type="submit" class="btn btn-primary" (click)="updateTutorial()">
+          Salvar alteração
+        </button>
+        <div class="text-primary">
+          {{message}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="!currentTutorial">
+  <br />
+  <p>Cannot access this Tutorial...</p>
+</div>
