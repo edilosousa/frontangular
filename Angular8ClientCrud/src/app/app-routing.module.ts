@@ -7,7 +7,7 @@ import { AddTutorialComponent } from './components/add-tutorial/add-tutorial.com
 const routes: Routes = [
   { path: '', redirectTo: 'colaboradores', pathMatch: 'full' },
   { path: 'colaboradores', component: TutorialsListComponent },
-  { path: 'tutorials/:id', component: TutorialDetailsComponent },
+  { path: 'colaborador/:id', component: TutorialDetailsComponent },
   { path: 'cadastrar', component: AddTutorialComponent }
 ];
 
