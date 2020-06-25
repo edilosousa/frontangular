@@ -1,0 +1,12 @@
+<div>
+  <div class="row text-center bg-dark text-info rounded">
+    <div class="col-sm-12">
+      <h3>Gráfico de quantidade de colaboradores agrupados por cargo.</h3>
+    </div>
+  </div>
+  <div style="display: block">
+    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+      [legend]="barChartLegend" [chartType]="barChartType">
+    </canvas>
+  </div>
+</div>
