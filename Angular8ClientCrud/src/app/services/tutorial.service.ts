@@ -37,4 +37,8 @@ export class TutorialService {
   findByTitle(nome) {
     return this.http.get(`${baseUrl}?nome=${nome}`);
   }
+
+  countCargo(){
+    return this.http.get(`${baseUrl}/quantidade-por-cargo`);
+  }
 }

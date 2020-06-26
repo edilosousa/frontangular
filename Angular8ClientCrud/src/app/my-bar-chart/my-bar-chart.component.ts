@@ -9,6 +9,10 @@ import { TutorialService } from 'src/app/services/tutorial.service';
 export class MyBarChartComponent implements OnInit {
 
   tutorials: any;
+  informacao = {
+    data: [],
+    label: ''
+  }
 
   constructor(private tutorialService: TutorialService) { }
 
@@ -16,28 +20,35 @@ export class MyBarChartComponent implements OnInit {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartLabels = [];
   public barChartType = 'bar';
-  public barChartLegend = true;
+  public barChartLegend = false;
   public barChartData = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
+    {
+      data: [0],
+      label: '',
+    }
   ];
- 
 
   ngOnInit() {
-    this.retrieveTutorials();
+    this.countCargos()
   }
 
-  retrieveTutorials() {
-    this.tutorialService.getAll()
-      .subscribe(
-        data => {
-          this.tutorials = data;
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        });
+  async countCargos() {
+    this.tutorialService.countCargo().subscribe(
+      result => {
+        this.tutorials = result;
+        for(let dados of this.tutorials) {
+          
+          this.barChartLabels.push(dados.cargo);
+
+          this.informacao.label = dados.cargo;
+          this.informacao.data.push(dados.count);
+          this.barChartData.push(this.informacao);
+        }
+      }, error => {
+        console.error(error);
+      }
+    );
   }
 }
